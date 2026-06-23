@@ -24,7 +24,7 @@ export default function Home() {
 
       <main className="flex-grow">
         {/* 1. Hero Section */}
-        <section className="relative min-h-[90vh] flex items-center justify-center bg-slate-950 text-white overflow-hidden py-20 px-4">
+        <section className="relative min-h-screen flex items-center justify-center bg-slate-950 text-white overflow-hidden py-20 px-4">
           {/* Background Image with blur & dark overlay */}
           <div className="absolute inset-0 z-0">
             <ImageWithFallback
