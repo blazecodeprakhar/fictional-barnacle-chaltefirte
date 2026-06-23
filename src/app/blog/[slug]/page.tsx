@@ -1,21 +1,28 @@
-"use client";
-
 import React from "react";
-import { useParams } from "next/navigation";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { BLOGS } from "@/lib/db";
 import { Button } from "@/components/ui/Button";
-import { Calendar, Clock, ArrowLeft, ArrowRight, BookOpen, AlertTriangle } from "lucide-react";
-import { motion } from "framer-motion";
+import { Calendar, Clock, ArrowLeft, BookOpen, AlertTriangle } from "lucide-react";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
 
-export default function BlogDetailPage() {
-  const params = useParams();
-  const slug = params?.slug as string;
+// Pre-render static paths for blogs
+export function generateStaticParams() {
+  return BLOGS.map((blog) => ({
+    slug: blog.slug,
+  }));
+}
 
-  // Find blog
+type Props = {
+  params: Promise<{ slug: string }>;
+};
+
+export default async function BlogDetailPage({ params }: Props) {
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
+
+  // Find blog corresponding to this slug
   const blog = BLOGS.find((b) => b.slug === slug);
 
   // Recommended blogs

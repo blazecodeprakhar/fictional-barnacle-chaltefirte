@@ -1,0 +1,18 @@
+# Next.js Static Export Apache Configuration
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # If the file or directory exists, serve it directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  
+  # Serve Next.js static exported HTML files cleanly (e.g. serve /about.html for /about)
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^([^.]+)/?$ $1.html [L]
+
+  # Fallback to Next.js custom 404 page for missing routes
+  RewriteCond %{DOCUMENT_ROOT}/404.html -f
+  RewriteRule ^.*$ /404.html [L]
+</IfModule>

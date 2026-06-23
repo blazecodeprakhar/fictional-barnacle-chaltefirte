@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36">
+  <defs>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+  </defs>
+  <!-- Rounded container matching the navigation brand icon -->
+  <rect width="36" height="36" rx="10" fill="url(#brandGrad)" />
+  
+  <!-- Outer Compass Ring -->
+  <circle cx="18" cy="18" r="9" stroke="white" stroke-width="2.2" fill="none" opacity="0.95" />
+  
+  <!-- Compass Needle pointing Northeast -->
+  <polygon points="23.5,12.5 20.2,19.2 12.5,23.5 15.8,16.8" fill="white" />
+</svg>
