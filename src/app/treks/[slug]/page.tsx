@@ -55,7 +55,7 @@ export default function TrekDetailPage() {
     <>
       <Header />
 
-      <main className="flex-grow pt-24 pb-20">
+      <main className="flex-grow pb-20">
         {/* Banner Hero */}
         <section className="relative h-[45vh] w-full overflow-hidden bg-slate-950 text-white">
           <div className="absolute inset-0 z-0">

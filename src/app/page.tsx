@@ -22,7 +22,7 @@ export default function Home() {
     <>
       <Header />
 
-      <main className="flex-grow pt-16">
+      <main className="flex-grow">
         {/* 1. Hero Section */}
         <section className="relative min-h-[90vh] flex items-center justify-center bg-slate-950 text-white overflow-hidden py-20 px-4">
           {/* Background Image with blur & dark overlay */}
