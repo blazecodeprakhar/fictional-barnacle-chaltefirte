@@ -32,7 +32,7 @@ export default function Home() {
               alt="Sahyadri Mountains"
               className="w-full h-full object-cover opacity-35 scale-105 transform hover:scale-100 transition-transform duration-[10000ms]"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-950/45 via-slate-950/80 to-background" />
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-950/45 via-slate-950/80 to-[#0a0c10]" />
           </div>
 
           <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
@@ -80,7 +80,7 @@ export default function Home() {
                 </Button>
               </Link>
               <Link href="/about">
-                <Button size="lg" variant="outline" className="font-bold text-white border-white/20 hover:bg-white/10">
+                <Button size="lg" variant="outline" className="font-bold text-white border-white/20 bg-transparent hover:bg-white/10">
                   Our Story
                 </Button>
               </Link>
@@ -88,7 +88,7 @@ export default function Home() {
           </div>
 
           {/* Curved separator */}
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#0a0c10] to-transparent" />
         </section>
 
         {/* 2. Brand Impact & Trust Badging (Stats) */}

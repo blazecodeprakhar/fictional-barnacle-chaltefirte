@@ -23,6 +23,9 @@ export function Header() {
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
 
+  const isHomePage = pathname === "/";
+  const isHomeAndNotScrolled = isHomePage && !isScrolled && !isOpen;
+
   // Watch scroll to toggle background solidness
   useEffect(() => {
     const handleScroll = () => {
@@ -60,10 +63,10 @@ export function Header() {
               <Compass className="h-5.5 w-5.5 animate-spin-slow" />
             </div>
             <div>
-              <span className="text-lg font-black tracking-wider uppercase text-foreground">
+              <span className={`text-lg font-black tracking-wider uppercase transition-colors duration-300 ${isHomeAndNotScrolled ? "text-white" : "text-foreground"}`}>
                 Chalte<span className="text-primary">Firte</span>
               </span>
-              <span className="block text-[9px] font-bold tracking-widest text-muted-foreground uppercase -mt-1.5">
+              <span className={`block text-[9px] font-bold tracking-widest uppercase -mt-1.5 transition-colors duration-300 ${isHomeAndNotScrolled ? "text-white/60" : "text-muted-foreground"}`}>
                 CAMPING & TREKKING
               </span>
             </div>
@@ -80,7 +83,9 @@ export function Header() {
                   className={`text-sm font-semibold tracking-wide transition-colors relative py-1 ${
                     isActive
                       ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
+                      : isHomeAndNotScrolled
+                        ? "text-white/80 hover:text-white"
+                        : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {link.label}
@@ -101,7 +106,11 @@ export function Header() {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-secondary hover:bg-secondary/80 text-foreground transition-colors cursor-pointer"
+              className={`p-2 rounded-lg transition-colors cursor-pointer ${
+                isHomeAndNotScrolled
+                  ? "bg-white/10 hover:bg-white/20 text-white"
+                  : "bg-secondary hover:bg-secondary/80 text-foreground"
+              }`}
               aria-label="Toggle Theme"
             >
               {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
@@ -117,14 +126,22 @@ export function Header() {
           <div className="flex items-center gap-2 md:hidden">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-secondary text-foreground cursor-pointer"
+              className={`p-2 rounded-lg transition-colors cursor-pointer ${
+                isHomeAndNotScrolled
+                  ? "bg-white/10 text-white hover:bg-white/20"
+                  : "bg-secondary text-foreground hover:bg-secondary/80"
+              }`}
               aria-label="Toggle Theme"
             >
               {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg bg-secondary text-foreground cursor-pointer"
+              className={`p-2 rounded-lg transition-colors cursor-pointer ${
+                isHomeAndNotScrolled
+                  ? "bg-white/10 text-white hover:bg-white/20"
+                  : "bg-secondary text-foreground hover:bg-secondary/80"
+              }`}
               aria-label="Toggle Menu"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
